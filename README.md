@@ -6,7 +6,7 @@ This package includes functions for use in the analysis of compton scattering da
 
 This package requires a standard `julia` installation. In order to install this package run the following in the `julia` REPL
 
-```juliarepl
+```julia
 julia> using Pkg
 
 julia> Pkg.add(url="https://github.com/lvb5/LUComptonScatter.git")
@@ -14,7 +14,7 @@ julia> Pkg.add(url="https://github.com/lvb5/LUComptonScatter.git")
 
 You can then import this package and use its functions by
 
-```juliarepl
+```julia
 julia> using LUComptonScatter
 
 julia> expected_energy(10, 661)
