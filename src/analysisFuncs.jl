@@ -146,7 +146,7 @@ truncate the peak.
 
 See also [`peak_parameters`](@ref), [`get_peak_value`](@ref)
 """
-function find_peak_ends(x::Vector, y::Vector, peak::Float64, tol::Float64)
+function find_peak_ends(x::Vector, y::Vector, peak, tol)
 
     #create interpolation
     itp = interpolate((x,), y, Gridded(Linear()));
