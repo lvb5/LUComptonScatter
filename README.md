@@ -43,3 +43,7 @@ display(plt)
 result = get_peak_value(x0, y0, peaks[1])
 ```
 A plot of the raw data and the smoothed data with extreme points located are shown below
+
+![](examples/examplePlot1.png)
+
+![](examples/examplePlot2.png)
