@@ -44,4 +44,4 @@ result = get_peak_value(x0, y0, peaks[1])
 ```
 A plot of the raw data and the smoothed data with extreme points located are shown below
 
-<img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot2.png" width="400"/> <img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot1.png" width="400"/> 
+<img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot2.png" width="300"/> <img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot1.png" width="300"/> 
