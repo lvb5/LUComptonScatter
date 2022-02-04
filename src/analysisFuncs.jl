@@ -222,7 +222,7 @@ function get_peak_value(x::Vector, y::Vector, peak::Vector)
 
     #find value of the background
     background = (y[peak[1]] + y[peak[3]]) / 2
-    filterPeak = 0.2 * (y[peak[2]] - background) + background
+    filterPeak = 0.5 * (y[peak[2]] - background) + background
 
     #find indices of where 20% of background intersects with plot
     scaledVals = Vector{Int64}()
