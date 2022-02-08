@@ -248,4 +248,32 @@ function get_peak_value(x::Vector, y::Vector, peak::Vector)
     return peakVal; 
 
 end
+
+"""
+    gauss(x::Vector, p::Vector)
+
+Compute standard gaussion from `x` data with fit parameters `p`
+
+# Fit parameters
+- `p[1]`: scaling constant 
+- `p[2]`: σ
+- `p[3]`: μ
+"""
+@. gauss(x, p) = p[1] * (1/(p[2] * sqrt(2*π))) * exp((-1/2)*((x - p[3])^2) / p[2]^2)
+
+"""
+    fit_to_gauss(x::Vector, y::Vector, pk::Vector)
+
+Fit data to gaussian around a peak
+"""
+function fit_to_gauss(x::Vector, y::Vector, pk::Vector)
+    # starting conditions
+    p0 = [500.0, 500.0, 500.0]
+    fit = curve_fit(gauss, x, y, p0) #perform fit
+    Params = fit.param
+    Errors = standard_errors(fit)
+
+    return Params, Errors
+
+end
     
