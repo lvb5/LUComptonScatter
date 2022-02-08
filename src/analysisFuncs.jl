@@ -267,9 +267,31 @@ Compute standard gaussion from `x` data with fit parameters `p`
 Fit data to gaussian around a peak
 """
 function fit_to_gauss(x::Vector, y::Vector, pk::Vector)
+
+    #find value of the background
+    background = (y[pk[1]] + y[pk[3]]) / 2
+    filterPeak = 0.2 * (y[pk[2]] - background) + background
+
+    #find indices of where 20% of background intersects with plot
+    scaledVals = Vector{Int64}()
+    #from left edge to right
+    for i in 1:length(y)
+        if y[pk[1] + i] > filterPeak
+            push!(scaledVals, pk[1] + i)
+            break
+        end
+    end
+    #from right edge to left
+    for i in 1:length(y)
+        if y[pk[3] - i] > filterPeak
+            push!(scaledVals, pk[3] - i)
+            break
+        end
+    end
+
     # starting conditions
     p0 = [500.0, 500.0, 500.0]
-    fit = curve_fit(gauss, x, y, p0) #perform fit
+    fit = curve_fit(gauss, x[scaledVals[1]:scaledVals[2]], y[scaledVals[1]:scaledVals[2]], p0) #perform fit
     Params = fit.param
     Errors = standard_errors(fit)
 
