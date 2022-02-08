@@ -6,11 +6,18 @@ This package includes functions for use in the analysis of compton scattering da
 
 In order to install this package run the following in the `julia` REPL
 
-```julia
+```
 julia> using Pkg
 
 julia> Pkg.add(url="https://github.com/lvb5/LUComptonScatter.git")
 ```
+
+or use the package manager by typing "]" in the REPL and then
+
+```
+pkg> add https://github.com/lvb5/LUComptonScatter.git
+```
+
 Each function is well documented. To get help on a certain function, type ? then the function's name. 
 
 ## Example
