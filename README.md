@@ -4,7 +4,7 @@ This package includes functions for use in the analysis of compton scattering da
 
 ## Installation 
 
-In order to install this package run the following in the `julia` REPL
+In order to install this package run the following in the `julia` REPL:
 
 ```
 julia> using Pkg
