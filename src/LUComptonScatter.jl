@@ -16,5 +16,7 @@ export weighted_mean
 export find_peak_ends
 export peak_parameters
 export get_peak_value
+export gauss
+export fit_to_gauss
 
 end # module
