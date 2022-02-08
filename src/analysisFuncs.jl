@@ -1,4 +1,4 @@
-using LinearAlgebra, DataFrames, Findpeaks, Smoothers, Interpolations
+using LinearAlgebra, DataFrames, Findpeaks, Smoothers, Interpolations, LsqFit
 
 """
     expected_energy(θ, Eγ)
