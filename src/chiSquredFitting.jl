@@ -6,7 +6,12 @@ uncertainty `σ` in comparision to expected values `μ`
 """
 χ²(y::Vector, μ::Vector, σ::Vector) = sum((y .- μ).^2 ./ σ.^2)
 
-#define fit equation. Same as before
+"""
+    compton(θ, p)
+
+Compute compton energy at angle `θ` with initial energy `p[1]`
+and electron rest mass `p[2]`. 
+"""
 @. compton(θ, p) = p[1] * (1 / (1 + ((p[1]/p[2])*(1 - cos(θ * (π / 180))))))
 
 """
@@ -61,9 +66,11 @@ end
 
 """
     scan_box(startE1::Float64, stopE1::Float64, startM1::Float64, 
-    stopM1::Float64, xData::Vector, yData::Vector, yError::Vector, tol::Float64)
+            stopM1::Float64, xData::Vector, yData::Vector, yError::Vector, tol::Float64)
 
 Find best fit parameters and their errors and compute χ² given the parameters. 
+
+Require an upper limit of χ² of `tol::Float64`.
 """
 function scan_box(startE1::Float64, stopE1::Float64, startM1::Float64, stopM1::Float64, xData::Vector, yData::Vector, yError::Vector, tol::Float64)
 

@@ -1,3 +1,8 @@
+#=
+Author: Miles Cochran-Branson
+Date: 2/15/22
+=#
+
 module LUComptonScatter
 
 #dependencies 
