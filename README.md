@@ -94,6 +94,6 @@ plot!(xFit, yFit, label = L"Fit: $\chi^2/\textrm{dof} = %$chiOut$")
 ```
 This produces the following plot
 
-<img src=https://github.com/lvb5/LUComptonScatter/blob/master/examples/scatteredPlotEg.png width="300">
+<img src=https://github.com/lvb5/LUComptonScatter/blob/master/examples/scatteredPlotEg.png width="400">
 
 and paramters E = 657.8125 ± 2.8125, mₑ = 517.5 ± 2.5 which agree with expected values within three standard deviations. 
