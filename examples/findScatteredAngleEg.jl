@@ -25,4 +25,4 @@ scatter(x, y, yerror = σy,
         xlabel = "Scattering Angle [degrees]", 
         ylabel = "Energy [keV]", 
         dpi = 500, size = (350, 350))
-plot!(xFit, yFit, label = L"Fit: $\chi^2/dof = %$chiOut$")
+plot!(xFit, yFit, label = L"Fit: $\chi^2/\textrm{dof} = %$chiOut$")

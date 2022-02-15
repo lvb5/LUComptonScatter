@@ -1,3 +1,10 @@
+#=
+Peak fitting example using package LUComptonScatter
+
+Author: Miles Cochran-Branson
+Date: 2/15/22
+=#
+
 using LUComptonScatter, Plots
 
 #function determined from calibration
