@@ -20,7 +20,7 @@ pkg> add https://github.com/lvb5/LUComptonScatter.git
 
 Each function is well documented. To get help on a certain function, type ? then the function's name. 
 
-## Example
+## Peak Finding
 
 Say we take a set of data and want to perform some analysis of it. The following code performs a standard analysis of a data sample
 
@@ -54,4 +54,45 @@ Plots of the raw data and the smoothed data with extreme points located are show
 
 <img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot2.png" width="300"/> <img src="https://github.com/lvb5/LUComptonScatter/blob/master/examples/plot1.png" width="300"/> 
 
-The value returned by `fit_to_gauss()` is a vector containing the fit parameters and their uncertainty. This is generally the value we care about when analyzing data from the detector. 
+The value returned by `fit_to_gauss()` is a vector containing the fit parameters and their uncertainty. Notice that this uncertainty will be relatively small. Most uncertainty comes from calibration of the instrument. This is generally the value we care about when analyzing data from the detector. 
+
+## Data Fitting 
+
+Once we have found peak energies for various scattering angle, we wish to fit this to the compton formula. This is accomplished using a reduced chi squared method. An example to implement this is shown below 
+
+```julia
+using CSV, DataFrames, Plots, LaTeXStrings, LUComptonScatter
+
+df = DataFrame(CSV.File("examples/exampleScatter.csv"))
+x = df[!,1]
+y = df[!,2]
+#inverse of fit function, f to energy
+f_inverse(x) = (x + 0.1221) / 0.739
+#calculate uncertainty from propogation
+energy_uncertainty(x) = sqrt((0.02627 * x)^2 + 16.4079^2)
+#get them uncerainty values in energy
+σy = energy_uncertainty.(f_inverse.(y))
+
+#compute paramters and error from reduced chi^2
+E, σE, m, σm, chiSq = scan_box(610.0, 700.0, 460.0, 540.0, x, y, σy, 0.08)
+
+println("E = $E ± $σE; mₑ = $m ± $σm") #print result
+
+#data for fit plotting
+xFit = LinRange(0, x[length(x)], 1000)
+yFit = compton(xFit, [E, m])
+chiOut = round(chiSq, digits=2)
+
+#plot results
+scatter(x, y, yerror = σy,
+        label = "Data", 
+        xlabel = "Scattering Angle [degrees]", 
+        ylabel = "Energy [keV]", 
+        dpi = 500, size = (350, 350))
+plot!(xFit, yFit, label = L"Fit: $\chi^2/\textrm{dof} = %$chiOut$")
+```
+This produces the following plot
+
+<img src=https://github.com/lvb5/LUComptonScatter/blob/master/examples/scatteredPlotEg.png width="300">
+
+and paramters E = 657.8125 ± 2.8125, mₑ = 517.5 ± 2.5 which agree with expected values within three standard deviations. 
