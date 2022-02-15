@@ -63,12 +63,13 @@ Once we have found peak energies for various scattering angle, we wish to fit th
 ```julia
 using CSV, DataFrames, Plots, LaTeXStrings, LUComptonScatter
 
-df = DataFrame(CSV.File("examples/exampleScatter.csv"))
+df = DataFrame(CSV.File("/path/to/data.csv"))
 x = df[!,1]
 y = df[!,2]
-#inverse of fit function, f to energy
+
+#inverse of fit function, to go from energy to channel
 f_inverse(x) = (x + 0.1221) / 0.739
-#calculate uncertainty from propogation
+#calculate uncertainty from uncertainty propogation
 energy_uncertainty(x) = sqrt((0.02627 * x)^2 + 16.4079^2)
 #get them uncerainty values in energy
 σy = energy_uncertainty.(f_inverse.(y))
