@@ -19,4 +19,11 @@ export get_peak_value
 export gauss
 export fit_to_gauss
 
+include("chiSquredFitting.jl")
+
+export χ²
+export compton
+export scan
+export scan_box
+
 end # module
