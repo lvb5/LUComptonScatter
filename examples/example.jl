@@ -20,4 +20,5 @@ end
 display(plt)
 
 ##extract value of peak
-result = get_peak_value(x0, y0, peaks[1])
+result, error = fit_to_gauss(x0, y0, peaks[1])
+result[3], error[3]
