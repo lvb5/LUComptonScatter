@@ -20,6 +20,18 @@ pkg> add https://github.com/lvb5/LUComptonScatter.git
 
 Each function is well documented. To get help on a certain function, type ? then the function's name. 
 
+## Dependencies
+
+This package requires the following additional packages:
+
+- `DataFrames.jl`
+- `Findpeaks.jl`
+- `Interpolations.jl`
+- `LsqFit.jl`
+- `Smoothers.jl`
+
+`Findpeaks.jl` must be downloaded from the [GitHub page](https://github.com/tungli/Findpeaks.jl).
+
 ## Peak Finding
 
 Say we take a set of data and want to perform some analysis of it. The following code performs a standard analysis of a data sample
