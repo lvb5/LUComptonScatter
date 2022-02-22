@@ -30,7 +30,7 @@ This package requires the following additional packages:
 - `LsqFit.jl`
 - `Smoothers.jl`
 
-`Findpeaks.jl` must be downloaded from the [GitHub page](https://github.com/tungli/Findpeaks.jl).
+`Findpeaks.jl` must be downloaded from their [GitHub page](https://github.com/tungli/Findpeaks.jl).
 
 ## Peak Finding
 
