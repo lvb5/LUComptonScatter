@@ -27,7 +27,7 @@ function read_Txt(path_to_file::String)
 
     file = open(path_to_file, "r")
 
-    ## collect data. Note that this is 1-indexed
+    ## collect data. Note that this is 1-indexed while data is 0-indexedx
     data = Vector{Int64}()
 
     for ln in eachline(file)
@@ -49,15 +49,10 @@ function read_Txt(path_to_file::String)
             end
         end
     end
-
     close(file)
 
-    lines = Vector{Int64}()
-    line = 0
-    for i in 1:length(data)
-        line += 1
-        append!(lines, line)
-    end
+    # add indices of each channel starting with 1
+    lines = [i for i in 1:length(data)]
 
     return DataFrame(Lines = lines, Counts = data)
 end
