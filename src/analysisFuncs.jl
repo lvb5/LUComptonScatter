@@ -110,12 +110,18 @@ end
 Compute weighted mean of `x` with weights `w`
 """
 function weighted_mean(x, w)
+    #find weighted mean
     meanVal = 0.0
     w = normalize(w, 1)
     for i in 1:length(x)
         meanVal += x[i] * w[i]
     end
-    return meanVal;
+    #find uncertainty in mean
+    uncertaintyVal = 0.0
+    for i in 1:length(x)
+        uncertaintyVal += w[i] * (x[i] - meanVal)^2 * (1/(1 - w[i]^2))
+    end
+    return meanVal, sqrt(uncertaintyVal);
 end
 
 """
